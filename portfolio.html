@@ -3,2411 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Naveen Kumar S - Data Analyst & Web Developer</title>
+    <meta name="description" content="Projects by Naveen Kumar S - Full Stack Developer: React.js websites, dashboards, MongoDB/MySQL full-stack apps, React Native & Flutter mobile apps, and IoT systems.">
+    <title>Portfolio | Naveen Kumar S - Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #f8f9fa;
-            --dark: #2c3e50;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --bg-color: #f8f9fa;
-            --text-color: #2c3e50;
-            --card-bg: #ffffff;
-        }
-        
-        /* Dark Mode Variables */
-        [data-theme="dark"] {
-            --primary: #3498db;
-            --secondary: #2ecc71;
-            --accent: #e74c3c;
-            --light: #1a1a2e;
-            --dark: #ecf0f1;
-            --gray: #bdc3c7;
-            --light-gray: #2d3436;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --bg-color: #1a1a2e;
-            --text-color: #ecf0f1;
-            --card-bg: #16213e;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.7;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            overflow-x: hidden;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            text-align: left;
-            direction: ltr;
-        }
-        
-        body[dir="rtl"] {
-            text-align: right;
-            direction: rtl;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header & Navigation - FIXED */
-        header {
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            animation: slideDown 0.5s ease;
-            transition: background-color 0.5s ease;
-        }
-        
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            position: relative;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            z-index: 1002;
-            flex-shrink: 0;
-        }
-        
-        .logo span {
-            color: var(--accent);
-            margin-left: 5px;
-        }
-        
-        body[dir="rtl"] .logo span {
-            margin-left: 0;
-            margin-right: 5px;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            color: var(--secondary);
-        }
-        
-        body[dir="rtl"] .logo i {
-            margin-right: 0;
-            margin-left: 10px;
-        }
-        
-        /* Right Side Controls */
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        /* Controls Container */
-        .controls-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-right: 15px;
-            padding-right: 15px;
-            border-right: 1px solid var(--light-gray);
-            height: 30px;
-        }
-        
-        body[dir="rtl"] .controls-container {
-            margin-right: 0;
-            margin-left: 15px;
-            padding-right: 0;
-            padding-left: 15px;
-            border-right: none;
-            border-left: 1px solid var(--light-gray);
-        }
-        
-        /* Control Buttons */
-        .control-btn {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.1rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .control-btn:hover {
-            background-color: rgba(52, 152, 219, 0.1);
-            color: var(--secondary);
-        }
-        
-        .control-btn.active {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        .control-btn .tooltip {
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            z-index: 1001;
-            pointer-events: none;
-        }
-        
-        .control-btn:hover .tooltip {
-            opacity: 1;
-            visibility: visible;
-            bottom: -35px;
-        }
-        
-        /* Theme Toggle Specific */
-        .theme-toggle .tooltip {
-            content: 'Switch to Dark';
-        }
-        
-        [data-theme="dark"] .theme-toggle .tooltip {
-            content: 'Switch to Light';
-        }
-        
-        /* RTL Toggle Specific */
-        .rtl-toggle .tooltip {
-            content: 'Switch to RTL';
-        }
-        
-        body[dir="rtl"] .rtl-toggle .tooltip {
-            content: 'Switch to LTR';
-        }
-        
-        /* Navigation */
-        nav {
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .nav-menu li {
-            margin-left: 35px;
-            position: relative;
-        }
-        
-        body[dir="rtl"] .nav-menu li {
-            margin-left: 0;
-            margin-right: 35px;
-        }
-        
-        .nav-menu a {
-            text-decoration: none;
-            font-weight: 600;
-            color: var(--text-color);
-            position: relative;
-            padding: 5px 0;
-            font-size: 1.05rem;
-            transition: var(--transition);
-        }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-        
-        body[dir="rtl"] .nav-menu a::after {
-            left: auto;
-            right: 0;
-        }
-        
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
-        }
-        
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--accent);
-        }
-        
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            background: none;
-            border: none;
-            transition: var(--transition);
-            z-index: 1002;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .hamburger:hover {
-            background-color: rgba(52, 152, 219, 0.1);
-            color: var(--secondary);
-        }
-        
-        /* Page Header */
-        .page-header {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        [data-theme="dark"] .page-header {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(231, 76, 60, 0.05) 100%);
-        }
-        
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.2)"/></svg>');
-            background-size: cover;
-            opacity: 0.1;
-        }
-        
-        [data-theme="dark"] .page-header::before {
-            opacity: 0.05;
-        }
-        
-        .page-title {
-            font-size: 3.2rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            animation: fadeInUp 0.8s ease;
-        }
-        
-        @keyframes fadeInUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(30px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-        
-        .page-subtitle {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-        
-        body[dir="rtl"] .page-subtitle {
-            text-align: center;
-        }
-        
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section-light {
-            background-color: var(--bg-color);
-        }
-        
-        .section-alt {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(231, 76, 60, 0.05) 100%);
-        }
-        
-        [data-theme="dark"] .section-alt {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.02) 0%, rgba(231, 76, 60, 0.02) 100%);
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 15px;
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-        
-        body[dir="rtl"] .section-title::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray);
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Portfolio Stats */
-        .portfolio-stats {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-        
-        .stat-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            flex: 1;
-            min-width: 180px;
-            transition: var(--transition);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 8px;
-            display: block;
-        }
-        
-        .stat-label {
-            color: var(--gray);
-            font-weight: 500;
-            font-size: 1rem;
-        }
-        
-        /* Filter Buttons */
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 40px;
-        }
-        
-        .filter-btn {
-            padding: 10px 24px;
-            background-color: var(--card-bg);
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.95rem;
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background-color: var(--secondary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(52, 152, 219, 0.2);
-        }
-        
-        .filter-btn.active {
-            background-color: var(--accent);
-            border-color: var(--accent);
-            box-shadow: 0 8px 15px rgba(231, 76, 60, 0.2);
-        }
-        
-        body[dir="rtl"] .filter-container {
-            text-align: center;
-        }
-        
-        /* Portfolio Grid - FIXED: Eliminated empty spaces */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-            align-items: stretch;
-        }
-        
-        .portfolio-item {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .portfolio-img {
-            height: 200px;
-            background-color: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-        
-        .portfolio-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
-            opacity: 0.9;
-            transition: var(--transition);
-        }
-        
-        .portfolio-item:hover .portfolio-img::before {
-            opacity: 0.95;
-        }
-        
-        .portfolio-img i {
-            z-index: 1;
-        }
-        
-        .portfolio-info {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
-        .portfolio-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-        
-        .portfolio-info p {
-            color: var(--gray);
-            margin-bottom: 15px;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            flex-grow: 1;
-        }
-        
-        .portfolio-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 15px;
-        }
-        
-        .portfolio-tag {
-            padding: 4px 10px;
-            background-color: rgba(52, 152, 219, 0.1);
-            color: var(--secondary);
-            border-radius: 16px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .portfolio-tag.accent {
-            background-color: rgba(231, 76, 60, 0.1);
-            color: var(--accent);
-        }
-        
-        .portfolio-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-            padding-top: 15px;
-            border-top: 1px solid var(--light-gray);
-        }
-        
-        .portfolio-date {
-            color: var(--gray);
-            font-size: 0.85rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 8px 20px;
-            background-color: var(--secondary);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-accent {
-            background-color: var(--accent);
-        }
-        
-        .btn-accent:hover {
-            background-color: #c0392b;
-        }
-        
-        /* Project Details */
-        .project-details {
-            display: none;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            margin-top: 30px;
-            animation: fadeInUp 0.5s ease;
-        }
-        
-        .project-details.active {
-            display: block;
-        }
-        
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-        
-        .project-title {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        
-        .project-category {
-            color: var(--secondary);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        
-        .close-details {
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            color: var(--gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .close-details:hover {
-            color: var(--accent);
-            transform: rotate(90deg);
-        }
-        
-        .project-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
-        
-        body[dir="rtl"] .project-content {
-            text-align: right;
-        }
-        
-        .project-description h3,
-        .project-features h3,
-        .project-tech h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--light-gray);
-        }
-        
-        .project-features ul,
-        .project-tech ul {
-            list-style: none;
-        }
-        
-        .project-features li,
-        .project-tech li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            align-items: center;
-        }
-        
-        body[dir="rtl"] .project-features li,
-        body[dir="rtl"] .project-tech li {
-            flex-direction: row-reverse;
-        }
-        
-        .project-features li:last-child,
-        .project-tech li:last-child {
-            border-bottom: none;
-        }
-        
-        .project-features li i,
-        .project-tech li i {
-            color: var(--accent);
-            margin-right: 8px;
-            font-size: 0.85rem;
-        }
-        
-        body[dir="rtl"] .project-features li i,
-        body[dir="rtl"] .project-tech li i {
-            margin-right: 0;
-            margin-left: 8px;
-        }
-        
-        /* Testimonials */
-        .testimonials-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        
-        .testimonial-slide {
-            min-width: 100%;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        
-        .testimonial-content {
-            font-size: 1rem;
-            color: var(--gray);
-            margin-bottom: 25px;
-            line-height: 1.7;
-            font-style: italic;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-        }
-        
-        .author-info h4 {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .author-info p {
-            color: var(--gray);
-            font-size: 0.85rem;
-        }
-        
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        
-        .slider-btn {
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            color: var(--secondary);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .slider-btn:hover {
-            color: var(--accent);
-            transform: scale(1.2);
-        }
-        
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
-        }
-        
-        .slider-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--light-gray);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .slider-dot.active {
-            background-color: var(--accent);
-            transform: scale(1.2);
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--secondary) 0%, #2980b9 100%);
-            color: white;
-            border-radius: 15px;
-            margin: 60px 0;
-        }
-        
-        .cta-title {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        
-        .cta-text {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .btn-white {
-            background-color: white;
-            color: var(--secondary);
-        }
-        
-        .btn-white:hover {
-            background-color: var(--light-gray);
-            color: var(--primary);
-        }
-        
-        .btn-transparent {
-            background-color: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-        
-        .btn-transparent:hover {
-            background-color: white;
-            color: var(--secondary);
-        }
-        
-        /* Enhanced Footer - UPDATED: Removed newsletter section */
-        footer {
-            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
-            color: white;
-            padding: 30px 0 15px;
-            position: relative;
-            overflow: hidden;
-            text-align: left;
-        }
-        
-        body[dir="rtl"] footer {
-            text-align: right;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-        }
-        
-        .footer-wave {
-            position: absolute;
-            top: -30px;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%232c3e50"/></svg>');
-            background-size: 1200px 100%;
-        }
-        
-        [data-theme="dark"] footer {
-            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .footer-col {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .footer-logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            color: white;
-        }
-        
-        .footer-logo i {
-            margin-right: 8px;
-            color: var(--accent);
-            font-size: 1.8rem;
-        }
-        
-        body[dir="rtl"] .footer-logo i {
-            margin-right: 0;
-            margin-left: 8px;
-        }
-        
-        .footer-logo span {
-            color: var(--accent);
-            background: linear-gradient(45deg, var(--accent), #ff9f80);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-about p {
-            margin-bottom: 15px;
-            opacity: 0.85;
-            line-height: 1.7;
-            font-size: 0.9rem;
-        }
-        
-        .footer-social {
-            margin-top: 10px;
-        }
-        
-        .footer-col h3 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            position: relative;
-            padding-bottom: 6px;
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 35px;
-            height: 2px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-        
-        body[dir="rtl"] .footer-col h3::after {
-            left: auto;
-            right: 0;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 8px;
-        }
-        
-        .footer-links li a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-        
-        .footer-links li a:hover {
-            color: white;
-            transform: translateX(4px);
-        }
-        
-        body[dir="rtl"] .footer-links li a:hover {
-            transform: translateX(-4px);
-        }
-        
-        .footer-links li a i {
-            margin-right: 6px;
-            color: var(--secondary);
-            font-size: 0.8rem;
-            transition: var(--transition);
-        }
-        
-        body[dir="rtl"] .footer-links li a i {
-            margin-right: 0;
-            margin-left: 6px;
-        }
-        
-        .footer-links li a:hover i {
-            color: var(--accent);
-            transform: rotate(15deg);
-        }
-        
-        .footer-contact {
-            list-style: none;
-        }
-        
-        .footer-contact li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .footer-contact li i {
-            color: var(--secondary);
-            margin-right: 8px;
-            font-size: 0.9rem;
-            margin-top: 3px;
-        }
-        
-        body[dir="rtl"] .footer-contact li i {
-            margin-right: 0;
-            margin-left: 8px;
-        }
-        
-        .footer-contact li span {
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.5;
-            font-size: 0.9rem;
-        }
-        
-        .footer-contact li span strong {
-            color: white;
-            display: block;
-            margin-bottom: 2px;
-            font-size: 0.9rem;
-        }
-        
-        .footer-social h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 8px;
-            margin-top: 8px;
-        }
-        
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 35px;
-            height: 35px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: var(--transition);
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px) rotate(10deg);
-            box-shadow: 0 5px 10px rgba(231, 76, 60, 0.3);
-        }
-        
-        .social-icon.linkedin:hover {
-            background-color: #0077b5;
-        }
-        
-        .social-icon.email:hover {
-            background-color: #ea4335;
-        }
-        
-        .social-icon.github:hover {
-            background-color: #333;
-        }
-        
-        .social-icon.twitter:hover {
-            background-color: #1da1f2;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.8;
-            font-size: 0.8rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .copyright p {
-            margin-bottom: 4px;
-        }
-        
-        .footer-love {
-            color: var(--accent);
-            animation: heartbeat 1.5s infinite;
-        }
-        
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        /* Animation Classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Menu Overlay */
-        .menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            backdrop-filter: blur(3px);
-        }
-        
-        .menu-overlay.active {
-            display: block;
-        }
-        
-        /* Prevent body scroll when menu is open */
-        body.menu-open {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
-        
-        /* RESPONSIVE STYLES - FIXED HAMBURGER MENU */
-        @media (max-width: 992px) {
-            .page-title {
-                font-size: 2.5rem;
-            }
-            
-            .project-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-            
-            .nav-menu li {
-                margin-left: 25px;
-            }
-            
-            body[dir="rtl"] .nav-menu li {
-                margin-left: 0;
-                margin-right: 25px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            /* Header adjustments for mobile */
-            .header-container {
-                padding: 10px 12px;
-                flex-wrap: nowrap;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                flex-shrink: 0;
-            }
-            
-            .header-right {
-                order: 3;
-                margin-left: auto;
-            }
-            
-            .controls-container {
-                margin-right: 8px;
-                padding-right: 8px;
-                border-right-width: 1px;
-                gap: 6px;
-            }
-            
-            body[dir="rtl"] .controls-container {
-                margin-right: 0;
-                margin-left: 8px;
-                padding-right: 0;
-                padding-left: 8px;
-                border-right: none;
-                border-left-width: 1px;
-            }
-            
-            .control-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
-            }
-            
-            /* Hide tooltips on mobile */
-            .control-btn .tooltip {
-                display: none;
-            }
-            
-            /* Show hamburger on mobile */
-            .hamburger {
-                display: flex;
-            }
-            
-            /* Navigation menu for mobile - FIXED */
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 85%;
-                max-width: 300px;
-                height: 100vh;
-                background-color: var(--card-bg);
-                flex-direction: column;
-                padding: 90px 25px 25px;
-                transition: all 0.5s ease;
-                z-index: 1001;
-                box-shadow: var(--shadow);
-                margin: 0;
-                overflow-y: auto;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            body[dir="rtl"] .nav-menu {
-                left: auto;
-                right: -100%;
-            }
-            
-            body[dir="rtl"] .nav-menu.active {
-                left: auto;
-                right: 0;
-            }
-            
-            .nav-menu li {
-                margin: 0 0 12px 0;
-                width: 100%;
-            }
-            
-            .nav-menu a {
-                display: block;
-                padding: 12px;
-                font-size: 1rem;
-                border-radius: 8px;
-                transition: all 0.3s ease;
-                text-align: left;
-                width: 100%;
-            }
-            
-            body[dir="rtl"] .nav-menu a {
-                text-align: right;
-            }
-            
-            .nav-menu a:hover,
-            .nav-menu a.active {
-                background-color: rgba(52, 152, 219, 0.1);
-                color: var(--secondary);
-            }
-            
-            .nav-menu a::after {
-                display: none;
-            }
-            
-            /* Page header mobile */
-            .page-header {
-                padding: 120px 0 60px;
-            }
-            
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            /* Portfolio grid mobile */
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* Filter buttons mobile */
-            .filter-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .filter-btn {
-                width: 100%;
-                max-width: 280px;
-            }
-            
-            /* Stats cards mobile */
-            .stat-card {
-                min-width: calc(50% - 10px);
-                padding: 20px;
-            }
-            
-            /* CTA buttons mobile */
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            /* Footer mobile */
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            /* Project details mobile */
-            .project-header {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-            
-            body[dir="rtl"] .project-header {
-                align-items: flex-end;
-            }
-            
-            .testimonial-slide {
-                padding: 20px;
-            }
-        }
-        
-        /* Desktop Styles - Hide hamburger */
-        @media (min-width: 769px) {
-            .hamburger {
-                display: none !important;
-            }
-            
-            .nav-menu {
-                display: flex !important;
-                position: static;
-                height: auto;
-                flex-direction: row;
-                padding: 0;
-                background: transparent;
-                box-shadow: none;
-                width: auto;
-            }
-            
-            .nav-menu li {
-                margin-left: 30px;
-            }
-            
-            body[dir="rtl"] .nav-menu li {
-                margin-left: 0;
-                margin-right: 30px;
-            }
-            
-            .nav-menu a {
-                padding: 5px 0;
-                font-size: 1rem;
-                border-radius: 0;
-            }
-            
-            .nav-menu a:hover,
-            .nav-menu a.active {
-                background-color: transparent;
-            }
-            
-            .nav-menu a::after {
-                display: block;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .page-header {
-                padding: 100px 0 50px;
-            }
-            
-            .page-title {
-                font-size: 1.8rem;
-            }
-            
-            .page-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .stat-card {
-                min-width: 100%;
-            }
-            
-            .project-details {
-                padding: 20px;
-            }
-            
-            .portfolio-info {
-                padding: 15px;
-            }
-            
-            .portfolio-meta {
-                flex-direction: column;
-                gap: 12px;
-                align-items: flex-start;
-            }
-            
-            body[dir="rtl"] .portfolio-meta {
-                align-items: flex-end;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
-            .cta-title {
-                font-size: 1.6rem;
-            }
-            
-            .cta-text {
-                font-size: 1rem;
-            }
-            
-            .header-container {
-                padding: 8px 10px;
-            }
-            
-            .logo {
-                font-size: 1.3rem;
-            }
-            
-            .control-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 0.9rem;
-            }
-            
-            .controls-container {
-                margin-right: 5px;
-                padding-right: 5px;
-                gap: 4px;
-            }
-            
-            /* Footer mobile adjustments */
-            footer {
-                padding: 25px 0 10px;
-            }
-            
-            .footer-wave {
-                top: -20px;
-                height: 20px;
-            }
-            
-            .footer-container {
-                gap: 15px;
-                margin-bottom: 10px;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            .nav-menu {
-                width: 90%;
-                padding: 80px 20px 20px;
-            }
-            
-            .portfolio-grid {
-                gap: 20px;
-            }
-            
-            .header-container {
-                padding: 8px 10px;
-            }
-            
-            .logo {
-                font-size: 1.2rem;
-            }
-            
-            .page-title {
-                font-size: 1.6rem;
-            }
-            
-            /* Footer extra small screens */
-            .footer-logo {
-                font-size: 1.4rem;
-            }
-            
-            .footer-logo i {
-                font-size: 1.6rem;
-            }
-        }
-        
-        /* Animation for portfolio items */
-        .portfolio-item:nth-child(1) { animation-delay: 0.1s; }
-        .portfolio-item:nth-child(2) { animation-delay: 0.2s; }
-        .portfolio-item:nth-child(3) { animation-delay: 0.3s; }
-        .portfolio-item:nth-child(4) { animation-delay: 0.4s; }
-        .portfolio-item:nth-child(5) { animation-delay: 0.5s; }
-        .portfolio-item:nth-child(6) { animation-delay: 0.6s; }
-        .portfolio-item:nth-child(7) { animation-delay: 0.7s; }
-        .portfolio-item:nth-child(8) { animation-delay: 0.8s; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body data-theme="light">
-    <!-- Header - FIXED STRUCTURE -->
+    <!-- Header -->
     <header>
         <div class="header-container container">
             <a href="index.html" class="logo">
-                <i class="fas fa-chart-line"></i>Naveen<span>Kumar</span>
+                <span class="logo-badge">NK</span>
+                Naveen<span>Kumar</span>
             </a>
-            
+
             <nav>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="portfolio.html" class="active">Portfolio</a></li>
                     <li><a href="skills.html">Skills</a></li>
-                    <li><a href="education.html">Education</a></li>
                     <li><a href="experience.html">Experience</a></li>
+                    <li><a href="education.html">Education</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            
+
             <div class="header-right">
                 <div class="controls-container">
-                    <!-- Theme toggle button -->
-                    <button class="control-btn theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                    <button class="control-btn theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
                         <i class="fas fa-moon"></i>
                         <span class="tooltip">Switch to Dark</span>
                     </button>
-                    
-                    <button class="control-btn rtl-toggle" id="rtlToggle" title="Toggle RTL/LTR">
+                    <button class="control-btn rtl-toggle" id="rtlToggle" title="Toggle RTL/LTR" aria-label="Toggle RTL/LTR">
                         <i class="fas fa-exchange-alt"></i>
                         <span class="tooltip">Switch to RTL</span>
                     </button>
                 </div>
-                
-                <button class="hamburger" id="hamburger" aria-label="Menu">
+
+                <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Menu Overlay for Mobile -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">My Portfolio</h1>
-            <p class="page-subtitle">Showcasing my projects in Data Analytics, Web Development, IoT, and more. Each project represents my skills, creativity, and problem-solving abilities.</p>
-        </div>
-    </section>
-
-    <!-- Portfolio Stats -->
-    <section class="section section-light">
-        <div class="container">
-            <div class="portfolio-stats">
-                <div class="stat-card fade-in">
-                    <span class="stat-number">12</span>
-                    <span class="stat-label">Projects Completed</span>
-                </div>
-                <div class="stat-card fade-in">
-                    <span class="stat-number">8</span>
-                    <span class="stat-label">Happy Clients</span>
-                </div>
-                <div class="stat-card fade-in">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-card fade-in">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Satisfaction Rate</span>
-                </div>
-            </div>
+            <span class="page-eyebrow">Portfolio</span>
+            <h1 class="page-title">Projects &amp; Applications</h1>
+            <p class="page-subtitle">A curated showcase of web applications, dashboards, full-stack systems, mobile apps, and IoT solutions I have built.</p>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section class="section section-alt" id="portfolio">
+    <section class="section" id="portfolio">
         <div class="container">
-            <h2 class="section-title fade-in">Featured Projects</h2>
-            <p class="section-subtitle fade-in">Explore my work across different domains and technologies</p>
-            
             <!-- Filter Buttons -->
             <div class="filter-container">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="data">Data Analytics</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="iot">IoT Projects</button>
-                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="web">Web &amp; Frontend</button>
+                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn" data-filter="iot">IoT Systems</button>
             </div>
-            
+
             <!-- Portfolio Grid -->
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- Data Analytics Project 1 -->
-                <div class="portfolio-item" data-category="data">
-                    <div class="portfolio-img">
-                        <i class="fas fa-chart-bar"></i>
+            <div class="grid-3" id="portfolioGrid">
+                <!-- Project 1 -->
+                <article class="project-card portfolio-item fade-in" data-category="web">
+                    <div class="project-banner alt-1">
+                        <div class="project-banner-icon"><i class="fas fa-building"></i></div>
+                        <span class="project-type-badge">Web &amp; Frontend</span>
                     </div>
-                    <div class="portfolio-info">
-                        <h3>Sales Data Analysis Dashboard</h3>
-                        <p>Interactive Power BI dashboard for analyzing sales performance across multiple regions and product categories with predictive analytics.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Power BI</span>
-                            <span class="portfolio-tag">Data Visualization</span>
-                            <span class="portfolio-tag">Python</span>
+                    <div class="project-body">
+                        <h3 class="project-title">Responsive Business Websites &amp; Web Apps</h3>
+                        <p class="project-desc">Developed responsive business websites and web applications using React.js and Tailwind CSS, converting UI/UX designs into production-ready interfaces.</p>
+                        <div class="tag-row">
+                            <span class="tag">React.js</span>
+                            <span class="tag">Tailwind CSS</span>
+                            <span class="tag">JavaScript</span>
                         </div>
-                        <div class="portfolio-meta">
-                            <span class="portfolio-date">Jan 2023</span>
-                            <button class="btn btn-accent view-project" data-project="project1">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Web Development Project -->
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-img">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>E-Commerce Website</h3>
-                        <p>Fully responsive e-commerce website with product catalog, shopping cart, and user authentication system built with HTML, CSS, and JavaScript.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">HTML/CSS</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">Responsive Design</span>
-                        </div>
-                        <div class="portfolio-meta">
-                            <span class="portfolio-date">Mar 2023</span>
-                            <button class="btn btn-accent view-project" data-project="project2">View Details</button>
+                        <div class="project-footer">
+                            <span class="project-scope">Web Applications</span>
+                            <button class="btn btn-ghost view-project" data-project="project1">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-                
-                <!-- IoT Project -->
-                <div class="portfolio-item" data-category="iot">
-                    <div class="portfolio-img">
-                        <i class="fas fa-seedling"></i>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card portfolio-item fade-in" data-category="web">
+                    <div class="project-banner alt-3">
+                        <div class="project-banner-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <span class="project-type-badge">Frontend UI</span>
                     </div>
-                    <div class="portfolio-info">
-                        <h3>Smart Agriculture Using IoT</h3>
-                        <p>IoT-based system for monitoring soil moisture, temperature, and humidity with automated irrigation control and real-time data analytics.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">IoT</span>
-                            <span class="portfolio-tag">Arduino</span>
-                            <span class="portfolio-tag accent">Sensors</span>
+                    <div class="project-body">
+                        <h3 class="project-title">Portfolio Websites &amp; Frontend Dashboards</h3>
+                        <p class="project-desc">Built modern portfolio websites and interactive frontend dashboards with reusable UI components, cross-browser compatibility, and clean layouts.</p>
+                        <div class="tag-row">
+                            <span class="tag">HTML5 / CSS3</span>
+                            <span class="tag">React.js</span>
+                            <span class="tag teal">Power BI</span>
                         </div>
-                        <div class="portfolio-meta">
-                            <span class="portfolio-date">Jun 2022</span>
-                            <button class="btn btn-accent view-project" data-project="project3">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Data Analytics Project 2 -->
-                <div class="portfolio-item" data-category="data">
-                    <div class="portfolio-img">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Customer Behavior Analysis</h3>
-                        <p>Analysis of customer purchase patterns and segmentation using Python (Pandas, NumPy, Scikit-learn) to identify key customer segments.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Python</span>
-                            <span class="portfolio-tag">Machine Learning</span>
-                            <span class="portfolio-tag accent">Pandas</span>
-                        </div>
-                        <div class="portfolio-meta">
-                            <span class="portfolio-date">Sep 2022</span>
-                            <button class="btn btn-accent view-project" data-project="project4">View Details</button>
+                        <div class="project-footer">
+                            <span class="project-scope">UI &amp; Dashboards</span>
+                            <button class="btn btn-ghost view-project" data-project="project2">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Web Development Project 2 -->
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-img">
-                        <i class="fas fa-tachometer-alt"></i>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card portfolio-item fade-in" data-category="fullstack">
+                    <div class="project-banner alt-2">
+                        <div class="project-banner-icon"><i class="fas fa-database"></i></div>
+                        <span class="project-type-badge">Full Stack</span>
                     </div>
-                    <div class="portfolio-info">
-                        <h3>Analytics Dashboard UI</h3>
-                        <p>User interface design for a data analytics dashboard with interactive charts, filters, and real-time data visualization components.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">UI/UX Design</span>
-                            <span class="portfolio-tag">CSS Grid</span>
-                            <span class="portfolio-tag">Chart.js</span>
+                    <div class="project-body">
+                        <h3 class="project-title">Full-Stack Applications with REST APIs</h3>
+                        <p class="project-desc">Created full-stack web applications integrating MongoDB and MySQL databases with REST APIs and structured Git-based development workflows.</p>
+                        <div class="tag-row">
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag teal">REST APIs</span>
                         </div>
-                        <div class="portfolio-meta">
-                            <span class="portfolio-date">Nov 2022</span>
-                            <button class="btn btn-accent view-project" data-project="project5">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Python Project -->
-                <div class="portfolio-item" data-category="python">
-                    <div class="portfolio-img">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Automated Data Processing Tool</h3>
-                        <p>Python-based tool for automating data cleaning, transformation, and reporting tasks with a user-friendly interface.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Python</span>
-                            <span class="portfolio-tag">Automation</span>
-                            <span class="portfolio-tag accent">Data Processing</span>
-                        </div>
-                        <div class="portfolio-meta">
-                            <span class="portfolio-date">Feb 2023</span>
-                            <button class="btn btn-accent view-project" data-project="project6">View Details</button>
+                        <div class="project-footer">
+                            <span class="project-scope">Backend &amp; Data</span>
+                            <button class="btn btn-ghost view-project" data-project="project3">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-                
-                <!-- IoT Project 2 -->
-                <div class="portfolio-item" data-category="iot">
-                    <div class="portfolio-img">
-                        <i class="fas fa-home"></i>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card portfolio-item fade-in" data-category="mobile fullstack">
+                    <div class="project-banner">
+                        <div class="project-banner-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <span class="project-type-badge">Mobile Apps</span>
                     </div>
-                    <div class="portfolio-info">
-                        <h3>Smart Home Automation</h3>
-                        <p>IoT-based home automation system for controlling lights, appliances, and security systems remotely via mobile app.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">IoT</span>
-                            <span class="portfolio-tag">Home Automation</span>
-                            <span class="portfolio-tag accent">Mobile App</span>
+                    <div class="project-body">
+                        <h3 class="project-title">Cross-Platform Mobile Applications</h3>
+                        <p class="project-desc">Developed responsive mobile applications using React Native and Flutter with REST API integration and database connectivity.</p>
+                        <div class="tag-row">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag teal">REST APIs</span>
                         </div>
-                        <div class="portfolio-meta">
-                            <span class="portfolio-date">Apr 2022</span>
-                            <button class="btn btn-accent view-project" data-project="project7">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Data Analytics Project 3 -->
-                <div class="portfolio-item" data-category="data">
-                    <div class="portfolio-img">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Financial Data Analysis</h3>
-                        <p>Comprehensive analysis of financial datasets to identify trends, anomalies, and insights for investment decision making.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Data Analysis</span>
-                            <span class="portfolio-tag accent">Excel</span>
-                            <span class="portfolio-tag">Statistical Analysis</span>
-                        </div>
-                        <div class="portfolio-meta">
-                            <span class="portfolio-date">Dec 2022</span>
-                            <button class="btn btn-accent view-project" data-project="project8">View Details</button>
+                        <div class="project-footer">
+                            <span class="project-scope">Android &amp; iOS</span>
+                            <button class="btn btn-ghost view-project" data-project="project4">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
+                </article>
+
+                <!-- Project 5 -->
+                <article class="project-card portfolio-item fade-in" data-category="iot">
+                    <div class="project-banner alt-4">
+                        <div class="project-banner-icon"><i class="fas fa-seedling"></i></div>
+                        <span class="project-type-badge">IoT Internship</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Smart Agriculture Using IoT</h3>
+                        <p class="project-desc">Completed Smart Agriculture project using IoT involving sensors and embedded monitoring systems during the EMGLITZ internship (2024).</p>
+                        <div class="tag-row">
+                            <span class="tag">IoT</span>
+                            <span class="tag teal">Sensors</span>
+                            <span class="tag">Embedded Systems</span>
+                        </div>
+                        <div class="project-footer">
+                            <span class="project-scope">EMGLITZ &bull; 2024</span>
+                            <button class="btn btn-ghost view-project" data-project="project5">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
             </div>
-            
-            <!-- Project Details Container -->
+
+            <!-- Dynamic Project Details Container -->
             <div id="projectDetailsContainer"></div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section section-light" id="testimonials">
+    <!-- CTA Banner -->
+    <section class="section section-alt">
         <div class="container">
-            <h2 class="section-title fade-in">Client Testimonials</h2>
-            <p class="section-subtitle fade-in">What clients and colleagues say about my work</p>
-            
-            <div class="testimonials-slider">
-                <div class="testimonial-track" id="testimonialTrack">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            "Naveen delivered an exceptional data analytics dashboard for our sales team. His attention to detail and understanding of our business needs was impressive. The insights from his dashboard helped us increase sales by 15%."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="author-info">
-                                <h4>Rajesh Kumar</h4>
-                                <p>Sales Director, TechCorp Solutions</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            "The web application developed by Naveen exceeded our expectations. It's responsive, user-friendly, and perfectly aligned with our brand. His communication throughout the project was excellent."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="author-info">
-                                <h4>Priya Sharma</h4>
-                                <p>CEO, Digital Marketing Agency</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-content">
-                            "Working with Naveen on our IoT smart agriculture project was a great experience. His technical expertise and problem-solving skills helped us overcome several challenges. The system is working flawlessly."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="author-info">
-                                <h4>Arun Patel</h4>
-                                <p>Farm Manager, Green Fields Agriculture</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="slider-controls">
-                    <button class="slider-btn" id="prevBtn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slider-btn" id="nextBtn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                
-                <div class="slider-dots">
-                    <button class="slider-dot active" data-slide="0"></button>
-                    <button class="slider-dot" data-slide="1"></button>
-                    <button class="slider-dot" data-slide="2"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section" id="cta">
-        <div class="container">
-            <div class="cta-section">
-                <h2 class="cta-title">Ready to Start Your Project?</h2>
-                <p class="cta-text">Whether you need data analysis, web development, or IoT solutions, I'm here to help bring your ideas to life with technical expertise and creative solutions.</p>
-                <div class="cta-buttons">
+            <div class="cta-banner fade-in">
+                <h2>Interested in Working Together?</h2>
+                <p>I am available for Full Stack and Frontend Developer roles as well as web and mobile application projects.</p>
+                <div class="cta-actions">
                     <a href="contact.html" class="btn btn-white">Get In Touch</a>
-                    <a href="skills.html" class="btn btn-transparent">View My Skills</a>
+                    <a href="experience.html" class="btn btn-white-outline">View Experience</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer - UPDATED: Newsletter section removed -->
-    <footer>
-        <div class="footer-wave"></div>
-        <div class="container">
-            <div class="footer-container">
-                <!-- About Column -->
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <i class="fas fa-chart-line"></i>Naveen<span>Kumar</span>
-                    </div>
-                    <div class="footer-about">
-                        <p>Data Analyst & Web Developer with expertise in Python, Power BI, HTML, CSS, and IoT. Passionate about creating data-driven solutions and innovative web applications.</p>
-                        
-                        <div class="footer-social">
-                            <h3>Follow Me</h3>
-                            <div class="social-icons">
-                                <a href="https://www.linkedin.com/in/naveen-kumar-986758266/" class="social-icon" target="_blank" title="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="mailto:naveenkumarit2020@gmail.com" class="social-icon" title="Email">
-                                    <i class="fas fa-envelope"></i>
-                                </a>
-                                <a href="#" class="social-icon" title="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="social-icon" title="Twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Quick Links Column -->
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
-                        <li><a href="skills.html"><i class="fas fa-cogs"></i> Skills</a></li>
-                        <li><a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                        <li><a href="experience.html"><i class="fas fa-briefcase"></i> Experience</a></li>
-                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Portfolio Links Column -->
-                <div class="footer-col">
-                    <h3>Portfolio</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chart-bar"></i> Data Analytics</a></li>
-                        <li><a href="#"><i class="fas fa-laptop-code"></i> Web Development</a></li>
-                        <li><a href="#"><i class="fab fa-python"></i> Python Projects</a></li>
-                        <li><a href="#"><i class="fas fa-microchip"></i> IoT Projects</a></li>
-                        <li><a href="#"><i class="fas fa-chart-line"></i> Dashboard Designs</a></li>
-                        <li><a href="#"><i class="fas fa-lightbulb"></i> Creative Solutions</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Info Column -->
-                <div class="footer-col">
-                    <h3>Contact Info</h3>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>
-                                <strong>Phone</strong>
-                                +91 9025806718
-                            </span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>
-                                <strong>Email</strong>
-                                naveenkumarit2020@gmail.com
-                            </span>
-                        </li>
-                        <li>
-                            <i class="fab fa-linkedin"></i>
-                            <span>
-                                <strong>LinkedIn</strong>
-                                naveen-kumar-986758266
-                            </span>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>
-                                <strong>Location</strong>
-                                Tamil Nadu, India
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Naveen Kumar S. All rights reserved.</p>
-                <p>Designed with <i class="fas fa-heart footer-love"></i> by Naveen Kumar</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Project Details Templates (Hidden) -->
+    <!-- Project Details Templates -->
     <template id="project1Template">
-        <div class="project-details" id="project1Details">
-            <div class="project-header">
+        <div class="project-details-panel">
+            <div class="project-details-head">
                 <div>
-                    <h2 class="project-title">Sales Data Analysis Dashboard</h2>
-                    <div class="project-category">Data Analytics</div>
+                    <span class="page-eyebrow">Web &amp; Frontend</span>
+                    <h2 style="font-size: 1.5rem;">Responsive Business Websites &amp; Web Applications</h2>
                 </div>
-                <button class="close-details">
-                    <i class="fas fa-times"></i>
-                </button>
+                <button class="close-details" aria-label="Close details"><i class="fas fa-times"></i></button>
             </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <h3>Project Overview</h3>
-                    <p>Developed an interactive Power BI dashboard to analyze sales performance across multiple regions and product categories. The dashboard provides real-time insights into sales trends, customer behavior, and product performance.</p>
-                    <p>The solution includes predictive analytics features that forecast future sales based on historical data and market trends. This helped the client identify opportunities for growth and optimize their sales strategy.</p>
+            <div class="project-details-grid">
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Overview</h3>
+                    <p style="color: var(--text-muted); font-size: 0.94rem;">
+                        Designed and built responsive business websites and interactive web applications using React.js and Tailwind CSS. Focused on faithfully translating UI/UX designs into clean, production-ready interfaces with strong performance and cross-browser compatibility.
+                    </p>
                 </div>
-                <div class="project-sidebar">
-                    <div class="project-features">
-                        <h3>Key Features</h3>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Real-time sales tracking</li>
-                            <li><i class="fas fa-check"></i> Regional performance analysis</li>
-                            <li><i class="fas fa-check"></i> Product category insights</li>
-                            <li><i class="fas fa-check"></i> Predictive sales forecasting</li>
-                            <li><i class="fas fa-check"></i> Interactive filters and drill-down</li>
-                        </ul>
-                    </div>
-                    <div class="project-tech">
-                        <h3>Technologies Used</h3>
-                        <ul>
-                            <li><i class="fab fa-microsoft"></i> Power BI</li>
-                            <li><i class="fab fa-python"></i> Python (Pandas, NumPy)</li>
-                            <li><i class="fas fa-database"></i> SQL</li>
-                            <li><i class="fas fa-chart-line"></i> Data Visualization</li>
-                        </ul>
-                    </div>
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Key Highlights</h3>
+                    <ul class="check-list">
+                        <li><i class="fas fa-check"></i><span>UI/UX design to production-ready React.js components</span></li>
+                        <li><i class="fas fa-check"></i><span>Mobile-first responsive layouts with Tailwind CSS</span></li>
+                        <li><i class="fas fa-check"></i><span>Performance optimization and cross-browser testing</span></li>
+                        <li><i class="fas fa-check"></i><span>Clean, maintainable component architecture</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </template>
 
     <template id="project2Template">
-        <div class="project-details" id="project2Details">
-            <div class="project-header">
+        <div class="project-details-panel">
+            <div class="project-details-head">
                 <div>
-                    <h2 class="project-title">E-Commerce Website</h2>
-                    <div class="project-category">Web Development</div>
+                    <span class="page-eyebrow">Frontend UI</span>
+                    <h2 style="font-size: 1.5rem;">Portfolio Websites &amp; Frontend Dashboards</h2>
                 </div>
-                <button class="close-details">
-                    <i class="fas fa-times"></i>
-                </button>
+                <button class="close-details" aria-label="Close details"><i class="fas fa-times"></i></button>
             </div>
-            <div class="project-content">
-                <div class="project-description">
-                    <h3>Project Overview</h3>
-                    <p>Designed and developed a fully responsive e-commerce website from scratch. The website includes a comprehensive product catalog, shopping cart functionality, user authentication system, and secure checkout process.</p>
-                    <p>The frontend was built with modern HTML5, CSS3, and JavaScript, while the backend utilized Python with Flask framework. The site is optimized for performance and SEO, with mobile-first responsive design.</p>
+            <div class="project-details-grid">
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Overview</h3>
+                    <p style="color: var(--text-muted); font-size: 0.94rem;">
+                        Built personal portfolio websites, WordPress customizations, and interactive frontend dashboards. Combined semantic HTML, modern CSS, JavaScript, and React.js with visual reporting concepts from Power BI.
+                    </p>
                 </div>
-                <div class="project-sidebar">
-                    <div class="project-features">
-                        <h3>Key Features</h3>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Responsive design (mobile-first)</li>
-                            <li><i class="fas fa-check"></i> User authentication & authorization</li>
-                            <li><i class="fas fa-check"></i> Shopping cart with real-time updates</li>
-                            <li><i class="fas fa-check"></i> Product search and filtering</li>
-                            <li><i class="fas fa-check"></i> Secure payment integration</li>
-                        </ul>
-                    </div>
-                    <div class="project-tech">
-                        <h3>Technologies Used</h3>
-                        <ul>
-                            <li><i class="fab fa-html5"></i> HTML5</li>
-                            <li><i class="fab fa-css3-alt"></i> CSS3</li>
-                            <li><i class="fab fa-js"></i> JavaScript</li>
-                            <li><i class="fab fa-python"></i> Python/Flask</li>
-                            <li><i class="fas fa-database"></i> SQLite</li>
-                        </ul>
-                    </div>
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Key Highlights</h3>
+                    <ul class="check-list">
+                        <li><i class="fas fa-check"></i><span>Reusable UI components for dashboards and navigation</span></li>
+                        <li><i class="fas fa-check"></i><span>Fast page load and responsive grid layouts</span></li>
+                        <li><i class="fas fa-check"></i><span>Theme support, filtering, and interactive views</span></li>
+                        <li><i class="fas fa-check"></i><span>Experience with WordPress &amp; Power BI reporting</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </template>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const body = document.body;
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('navMenu');
-            const menuOverlay = document.getElementById('menuOverlay');
-            const themeToggle = document.getElementById('themeToggle');
-            const rtlToggle = document.getElementById('rtlToggle');
-            const themeIcon = themeToggle.querySelector('i');
-            
-            // Check for saved preferences
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            const savedDir = localStorage.getItem('dir') || 'ltr';
-            
-            // Apply saved preferences
-            body.setAttribute('data-theme', savedTheme);
-            body.setAttribute('dir', savedDir);
-            
-            // Update icons based on saved preferences
-            updateThemeIcon(savedTheme);
-            updateRTLIcon(savedDir);
-            updateTooltips(savedTheme, savedDir);
-            
-            // Mobile Menu Toggle - FIXED
-            hamburger.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleMobileMenu();
-            });
-            
-            // Close menu when clicking overlay
-            menuOverlay.addEventListener('click', function() {
-                closeMobileMenu();
-            });
-            
-            // Close menu when clicking on a link
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    closeMobileMenu();
-                });
-            });
-            
-            // Toggle mobile menu function
-            function toggleMobileMenu() {
-                const isActive = !navMenu.classList.contains('active');
-                
-                if (isActive) {
-                    openMobileMenu();
-                } else {
-                    closeMobileMenu();
-                }
-            }
-            
-            // Open mobile menu function
-            function openMobileMenu() {
-                navMenu.classList.add('active');
-                menuOverlay.classList.add('active');
-                hamburger.innerHTML = '<i class="fas fa-times"></i>';
-                body.classList.add('menu-open');
-            }
-            
-            // Close mobile menu function
-            function closeMobileMenu() {
-                navMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-                body.classList.remove('menu-open');
-            }
-            
-            // Theme Toggle
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = body.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                
-                body.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                
-                // Update theme icon
-                updateThemeIcon(newTheme);
-                updateTooltips(newTheme, body.getAttribute('dir'));
-            });
-            
-            // RTL Toggle
-            rtlToggle.addEventListener('click', function() {
-                const currentDir = body.getAttribute('dir');
-                const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
-                
-                // Apply new direction
-                body.setAttribute('dir', newDir);
-                localStorage.setItem('dir', newDir);
-                
-                // Update RTL toggle icon and tooltips
-                updateRTLIcon(newDir);
-                updateTooltips(body.getAttribute('data-theme'), newDir);
-                
-                // Close mobile menu when switching RTL
-                closeMobileMenu();
-            });
-            
-            // Update theme icon
-            function updateThemeIcon(theme) {
-                themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-                themeToggle.classList.toggle('active', theme === 'dark');
-            }
-            
-            // Update RTL toggle icon
-            function updateRTLIcon(dir) {
-                const rtlIcon = rtlToggle.querySelector('i');
-                rtlIcon.className = dir === 'rtl' ? 'fas fa-text-width' : 'fas fa-exchange-alt';
-                rtlToggle.classList.toggle('active', dir === 'rtl');
-            }
-            
-            // Update tooltips
-            function updateTooltips(theme, dir) {
-                const themeTooltip = themeToggle.querySelector('.tooltip');
-                const rtlTooltip = rtlToggle.querySelector('.tooltip');
-                
-                if (themeTooltip) {
-                    themeTooltip.textContent = theme === 'dark' ? 'Switch to Light' : 'Switch to Dark';
-                }
-                
-                if (rtlTooltip) {
-                    rtlTooltip.textContent = dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
-                }
-            }
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    closeMobileMenu();
-                }
-            });
-            
-            // Close menu on escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeMobileMenu();
-                }
-            });
-            
-            // Scroll animations
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInOnScroll = function() {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
-                    }
-                });
-            };
-            
-            window.addEventListener('scroll', fadeInOnScroll);
-            fadeInOnScroll(); // Initial check
-            
-            // Portfolio Filter
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Get filter value
-                    const filterValue = this.getAttribute('data-filter');
-                    
-                    // Show/hide portfolio items with animation
-                    portfolioItems.forEach(item => {
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(30px)';
-                        
-                        setTimeout(() => {
-                            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                                item.style.display = 'flex';
-                                setTimeout(() => {
-                                    item.style.opacity = '1';
-                                    item.style.transform = 'translateY(0)';
-                                }, 50);
-                            } else {
-                                item.style.display = 'none';
-                            }
-                        }, 300);
-                    });
-                });
-            });
-            
-            // Project Details View
-            const viewProjectButtons = document.querySelectorAll('.view-project');
-            const projectDetailsContainer = document.getElementById('projectDetailsContainer');
-            
-            viewProjectButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const projectId = this.getAttribute('data-project');
-                    
-                    // Remove any existing project details
-                    const existingDetails = document.querySelector('.project-details.active');
-                    if (existingDetails) {
-                        existingDetails.remove();
-                    }
-                    
-                    // Get template and clone it
-                    const template = document.getElementById(projectId + 'Template');
-                    if (template) {
-                        const details = template.content.cloneNode(true);
-                        projectDetailsContainer.appendChild(details);
-                        
-                        // Add active class to show details
-                        const detailsElement = document.getElementById(projectId + 'Details');
-                        setTimeout(() => {
-                            detailsElement.classList.add('active');
-                        }, 10);
-                        
-                        // Close details button
-                        const closeButton = detailsElement.querySelector('.close-details');
-                        closeButton.addEventListener('click', function() {
-                            detailsElement.classList.remove('active');
-                            setTimeout(() => {
-                                detailsElement.remove();
-                            }, 500);
-                        });
-                        
-                        // Scroll to details
-                        detailsElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-            
-            // Testimonials Slider
-            const testimonialTrack = document.getElementById('testimonialTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const dots = document.querySelectorAll('.slider-dot');
-            let currentSlide = 0;
-            const totalSlides = document.querySelectorAll('.testimonial-slide').length;
-            
-            function updateSlider() {
-                testimonialTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
-            
-            prevBtn.addEventListener('click', function() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateSlider();
-            });
-            
-            nextBtn.addEventListener('click', function() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlider();
-            });
-            
-            dots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    currentSlide = parseInt(this.getAttribute('data-slide'));
-                    updateSlider();
-                });
-            });
-            
-            // Auto slide testimonials
-            let slideInterval = setInterval(() => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlider();
-            }, 5000);
-            
-            // Pause auto slide on hover
-            testimonialTrack.addEventListener('mouseenter', () => {
-                clearInterval(slideInterval);
-            });
-            
-            testimonialTrack.addEventListener('mouseleave', () => {
-                slideInterval = setInterval(() => {
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                    updateSlider();
-                }, 5000);
-            });
-            
-            // Add active class to current page link
-            const currentPage = window.location.pathname.split('/').pop();
-            const navItems = document.querySelectorAll('.nav-menu a');
-            
-            navItems.forEach(item => {
-                const href = item.getAttribute('href');
-                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        });
-    </script>
+    <template id="project3Template">
+        <div class="project-details-panel">
+            <div class="project-details-head">
+                <div>
+                    <span class="page-eyebrow">Full Stack</span>
+                    <h2 style="font-size: 1.5rem;">Full-Stack Applications with MongoDB, MySQL &amp; REST APIs</h2>
+                </div>
+                <button class="close-details" aria-label="Close details"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="project-details-grid">
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Overview</h3>
+                    <p style="color: var(--text-muted); font-size: 0.94rem;">
+                        Created full-stack web applications combining responsive frontend interfaces with structured backend data storage using MongoDB and MySQL, connected via REST APIs and managed through Git-based development workflows.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Key Highlights</h3>
+                    <ul class="check-list">
+                        <li><i class="fas fa-check"></i><span>REST API integration with loading &amp; error handling</span></li>
+                        <li><i class="fas fa-check"></i><span>Database modeling and querying in MongoDB &amp; MySQL</span></li>
+                        <li><i class="fas fa-check"></i><span>Version control &amp; collaboration using Git workflows</span></li>
+                        <li><i class="fas fa-check"></i><span>End-to-end CRUD flows and responsive UI</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="project4Template">
+        <div class="project-details-panel">
+            <div class="project-details-head">
+                <div>
+                    <span class="page-eyebrow">Mobile Apps</span>
+                    <h2 style="font-size: 1.5rem;">Cross-Platform Mobile Applications (React Native &amp; Flutter)</h2>
+                </div>
+                <button class="close-details" aria-label="Close details"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="project-details-grid">
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Overview</h3>
+                    <p style="color: var(--text-muted); font-size: 0.94rem;">
+                        Developed mobile applications using React Native and Flutter, building responsive mobile screens, integrating backend REST APIs, and connecting with MongoDB and MySQL databases.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Key Highlights</h3>
+                    <ul class="check-list">
+                        <li><i class="fas fa-check"></i><span>Cross-platform UI built with React Native &amp; Flutter</span></li>
+                        <li><i class="fas fa-check"></i><span>REST API consumption and dynamic data rendering</span></li>
+                        <li><i class="fas fa-check"></i><span>Consistent layouts across screen sizes</span></li>
+                        <li><i class="fas fa-check"></i><span>Git-based collaborative development</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="project5Template">
+        <div class="project-details-panel">
+            <div class="project-details-head">
+                <div>
+                    <span class="page-eyebrow">IoT Internship &bull; EMGLITZ (2024)</span>
+                    <h2 style="font-size: 1.5rem;">Smart Agriculture Using IoT</h2>
+                </div>
+                <button class="close-details" aria-label="Close details"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="project-details-grid">
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Overview</h3>
+                    <p style="color: var(--text-muted); font-size: 0.94rem;">
+                        Completed Smart Agriculture using IoT during my 2024 IoT Internship at EMGLITZ, involving environmental sensors and embedded monitoring systems for agricultural data tracking.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.05rem; margin-bottom: 10px;">Key Highlights</h3>
+                    <ul class="check-list">
+                        <li><i class="fas fa-check"></i><span>Sensor interfacing for field condition monitoring</span></li>
+                        <li><i class="fas fa-check"></i><span>Embedded monitoring system integration</span></li>
+                        <li><i class="fas fa-check"></i><span>Real-time parameter observation &amp; control logic</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="logo footer-logo">
+                        <span class="logo-badge">NK</span>
+                        Naveen<span>Kumar</span>
+                    </a>
+                    <p class="footer-about">
+                        Full Stack Developer skilled in React.js, React Native, Flutter, Tailwind CSS, JavaScript, MongoDB, and MySQL. Building responsive web and mobile applications.
+                    </p>
+                    <div class="social-row">
+                        <a href="https://www.linkedin.com/in/naveenkumar-s-b5803b278" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:naveenkumarli2020@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://my-porfolio-kappa-livid.vercel.app" target="_blank" rel="noopener noreferrer" class="social-btn" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="tel:+919025806718" class="social-btn" title="Phone"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="skills.html"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="experience.html"><i class="fas fa-chevron-right"></i> Experience</a></li>
+                        <li><a href="education.html"><i class="fas fa-chevron-right"></i> Education</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Core Stack</h4>
+                    <ul class="footer-links">
+                        <li><a href="skills.html"><i class="fas fa-code"></i> React.js &amp; Tailwind CSS</a></li>
+                        <li><a href="skills.html"><i class="fas fa-mobile-alt"></i> React Native &amp; Flutter</a></li>
+                        <li><a href="skills.html"><i class="fas fa-database"></i> MongoDB &amp; MySQL</a></li>
+                        <li><a href="skills.html"><i class="fab fa-python"></i> JavaScript, C &amp; Python</a></li>
+                        <li><a href="resume.html"><i class="fas fa-file-alt"></i> Printable Resume</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-phone"></i><span>+91 9025806718</span></li>
+                        <li><i class="fas fa-envelope"></i><span>naveenkumarli2020@gmail.com</span></li>
+                        <li><i class="fab fa-linkedin-in"></i><span>linkedin.com/in/naveenkumar-s-b5803b278</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>Hosur, Tamil Nadu, India</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; <span class="current-year"></span> Naveen Kumar S. All rights reserved.</span>
+                <span>Full Stack Developer Portfolio</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

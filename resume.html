@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resume of Naveen Kumar S - Full Stack Developer">
+    <title>Resume | Naveen Kumar S - Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .resume-page-wrap {
+            padding: calc(var(--header-height) + 32px) 0 64px;
+        }
+
+        .resume-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            max-width: 860px;
+            margin: 0 auto 20px;
+        }
+
+        .resume-sheet {
+            max-width: 860px;
+            margin: 0 auto;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 40px 44px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .resume-head {
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 2px solid var(--border-strong);
+            margin-bottom: 22px;
+        }
+
+        .resume-head h1 {
+            font-size: 2rem;
+            letter-spacing: 0.02em;
+            margin-bottom: 4px;
+        }
+
+        .resume-head-role {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .resume-contact-line {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 18px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .resume-contact-line a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .resume-section {
+            margin-bottom: 20px;
+        }
+
+        .resume-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .resume-section-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+        }
+
+        .resume-entry {
+            margin-bottom: 14px;
+        }
+
+        .resume-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .resume-entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .resume-entry-title {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .resume-entry-date {
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-subtle);
+        }
+
+        .resume-entry-org {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .resume-bullets {
+            padding-left: 18px;
+            list-style: disc;
+        }
+
+        body[dir="rtl"] .resume-bullets {
+            padding-left: 0;
+            padding-right: 18px;
+        }
+
+        .resume-bullets li {
+            font-size: 0.91rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .resume-kv {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .resume-kv strong {
+            color: var(--text);
+        }
+
+        @media (max-width: 640px) {
+            .resume-sheet {
+                padding: 24px 20px;
+            }
+        }
+
+        @media print {
+            header, footer, .resume-toolbar, .menu-overlay {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+                color: #0f172a !important;
+            }
+            .resume-page-wrap {
+                padding: 0 !important;
+            }
+            .resume-sheet {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+                background: #ffffff !important;
+            }
+            .resume-section-title, .resume-head-role {
+                color: #1e3a8a !important;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <header>
+        <div class="header-container container">
+            <a href="index.html" class="logo">
+                <span class="logo-badge">NK</span>
+                Naveen<span>Kumar</span>
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-right">
+                <div class="controls-container">
+                    <button class="control-btn theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon"></i>
+                        <span class="tooltip">Switch to Dark</span>
+                    </button>
+                    <button class="control-btn rtl-toggle" id="rtlToggle" title="Toggle RTL/LTR" aria-label="Toggle RTL/LTR">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span class="tooltip">Switch to RTL</span>
+                    </button>
+                </div>
+
+                <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <main class="resume-page-wrap">
+        <div class="container">
+            <div class="resume-toolbar">
+                <a href="index.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+                <button type="button" class="btn btn-primary" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print / Save as PDF
+                </button>
+            </div>
+
+            <article class="resume-sheet">
+                <div class="resume-head">
+                    <h1>NAVEEN KUMAR S</h1>
+                    <div class="resume-head-role">Full Stack Developer</div>
+                    <div class="resume-contact-line">
+                        <span><i class="fas fa-phone"></i> <a href="tel:+919025806718">9025806718</a></span>
+                        <span><i class="fas fa-envelope"></i> <a href="mailto:naveenkumarli2020@gmail.com">naveenkumarli2020@gmail.com</a></span>
+                        <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/naveenkumar-s-b5803b278" target="_blank" rel="noopener noreferrer">linkedin.com/in/naveenkumar-s-b5803b278</a></span>
+                        <span><i class="fas fa-globe"></i> <a href="https://my-porfolio-kappa-livid.vercel.app" target="_blank" rel="noopener noreferrer">my-porfolio-kappa-livid.vercel.app</a></span>
+                    </div>
+                </div>
+
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Professional Summary</h2>
+                    <p style="font-size: 0.92rem; color: var(--text-muted);">
+                        Full Stack Developer with 1 year of frontend development experience and 3 months of hands-on full-stack development experience. Skilled in HTML, CSS, Tailwind CSS, JavaScript, React.js, React Native, Flutter, MongoDB, and MySQL. Experienced in responsive web and mobile application development, REST API integration, and performance optimization.
+                    </p>
+                </section>
+
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Professional Experience</h2>
+                    <div class="resume-entry">
+                        <div class="resume-entry-head">
+                            <span class="resume-entry-title">Full Stack Developer</span>
+                            <span class="resume-entry-date">3 Months – Present</span>
+                        </div>
+                        <div class="resume-entry-org">Growwpark Technologies Private Limited, Hosur</div>
+                        <ul class="resume-bullets">
+                            <li>Develop web and mobile applications using React.js, React Native, Flutter, MongoDB, and MySQL.</li>
+                            <li>Build responsive interfaces and integrate REST APIs.</li>
+                            <li>Work with databases and Git-based development workflows.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-entry">
+                        <div class="resume-entry-head">
+                            <span class="resume-entry-title">Frontend Web Developer</span>
+                            <span class="resume-entry-date">1 Year</span>
+                        </div>
+                        <div class="resume-entry-org">Growwpark Technologies Private Limited</div>
+                        <ul class="resume-bullets">
+                            <li>Developed responsive websites using HTML, CSS, Tailwind CSS, JavaScript, and React.js.</li>
+                            <li>Converted UI/UX designs into production-ready interfaces.</li>
+                            <li>Improved website performance and browser compatibility.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Internships</h2>
+                    <div class="resume-entry">
+                        <div class="resume-entry-head">
+                            <span class="resume-entry-title">Frontend Developer Intern</span>
+                            <span class="resume-entry-date">October 2025 – January 2026</span>
+                        </div>
+                        <div class="resume-entry-org">Growwpark Technologies Private Limited, Hosur</div>
+                        <ul class="resume-bullets">
+                            <li>Developed reusable UI components using HTML, CSS, Tailwind CSS, JavaScript, and React.js.</li>
+                            <li>Fixed bugs, optimized performance, and collaborated with senior developers.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-entry">
+                        <div class="resume-entry-head">
+                            <span class="resume-entry-title">Web Development Intern – Internshala</span>
+                            <span class="resume-entry-date">2024</span>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Built responsive web pages using HTML, CSS, and JavaScript.</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-entry">
+                        <div class="resume-entry-head">
+                            <span class="resume-entry-title">IoT Intern – EMGLITZ</span>
+                            <span class="resume-entry-date">2024</span>
+                        </div>
+                        <ul class="resume-bullets">
+                            <li>Completed Smart Agriculture using IoT involving sensors and embedded monitoring systems.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Education</h2>
+                    <div class="resume-entry">
+                        <div class="resume-entry-head">
+                            <span class="resume-entry-title">B.Tech in Information Technology</span>
+                            <span class="resume-entry-date">8.2 CGPA &bull; 2020 – 2024</span>
+                        </div>
+                        <div class="resume-entry-org">Knowledge Institute of Technology (KIOT)</div>
+                    </div>
+                    <div class="resume-entry">
+                        <div class="resume-entry-head">
+                            <span class="resume-entry-title">HSC – Senthil Matric Hr. Sec. School</span>
+                            <span class="resume-entry-date">60% &bull; 2020</span>
+                        </div>
+                    </div>
+                    <div class="resume-entry">
+                        <div class="resume-entry-head">
+                            <span class="resume-entry-title">SSLC – Senthil Matric Hr. Sec. School</span>
+                            <span class="resume-entry-date">82% &bull; 2018</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Technical Skills</h2>
+                    <p class="resume-kv"><strong>Languages:</strong> HTML, CSS, JavaScript, C, Python</p>
+                    <p class="resume-kv"><strong>Frameworks:</strong> React.js, React Native, Flutter, Tailwind CSS</p>
+                    <p class="resume-kv"><strong>Databases:</strong> MongoDB, MySQL</p>
+                    <p class="resume-kv"><strong>Tools:</strong> Git, Power BI, WordPress</p>
+                </section>
+
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Projects</h2>
+                    <ul class="resume-bullets">
+                        <li>Developed responsive business websites and applications using React.js and Tailwind CSS.</li>
+                        <li>Built portfolio websites and frontend dashboards.</li>
+                        <li>Created full-stack applications using MongoDB, MySQL, and REST APIs.</li>
+                        <li>Developed mobile applications using React Native and Flutter.</li>
+                    </ul>
+                </section>
+
+                <section class="resume-section">
+                    <h2 class="resume-section-title">Certifications</h2>
+                    <p class="resume-kv"><strong>Data Analytics:</strong> Besant Technologies</p>
+                    <p class="resume-kv"><strong>Web Development:</strong> Internshala</p>
+                    <p class="resume-kv"><strong>Diploma:</strong> Computer Applications (DCA)</p>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="padding-top: 0;">
+                <span>&copy; <span class="current-year"></span> Naveen Kumar S. All rights reserved.</span>
+                <span>Full Stack Developer Portfolio</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
