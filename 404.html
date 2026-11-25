@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | 404 Error</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 40px 30px;
+        }
+        
+        .error-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+        }
+        
+        .error-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+        }
+        
+        .error-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .error-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 10px;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #182848;
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            box-shadow: 0 5px 15px rgba(75, 108, 183, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(75, 108, 183, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #4b6cb7;
+            border: 2px solid #4b6cb7;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f5f7fa;
+            transform: translateY(-3px);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            padding-left: 50px;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #4b6cb7;
+            box-shadow: 0 5px 15px rgba(75, 108, 183, 0.2);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+        
+        .helpful-links {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .helpful-links h3 {
+            margin-bottom: 20px;
+            color: #182848;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            justify-items: center;
+        }
+        
+        .links-grid a {
+            text-decoration: none;
+            color: #4b6cb7;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .links-grid a:hover {
+            background-color: #f0f4ff;
+            color: #182848;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .error-message {
+                font-size: 1.1rem;
+            }
+            
+            .error-content {
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 5rem;
+            }
+            
+            .error-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                width: 100%;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-content">
+            <div class="error-image">
+                <!-- SVG illustration for 404 error -->
+                <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4b6cb7;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#182848;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="50" y="50" width="400" height="300" rx="20" fill="url(#bgGradient)" opacity="0.1"/>
+                    <circle cx="250" cy="200" r="80" fill="url(#bgGradient)" opacity="0.2"/>
+                    <text x="250" y="110" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#4b6cb7">404</text>
+                    <text x="250" y="150" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#555">Page Not Found</text>
+                    <path d="M150,250 L200,300 L250,250 L300,300 L350,250" fill="none" stroke="#4b6cb7" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="150" cy="120" r="15" fill="#4b6cb7" opacity="0.7"/>
+                    <circle cx="350" cy="280" r="12" fill="#4b6cb7" opacity="0.7"/>
+                    <circle cx="380" cy="100" r="10" fill="#4b6cb7" opacity="0.7"/>
+                </svg>
+            </div>
+            
+            <div class="error-text">
+                <h1 class="error-code">404</h1>
+                <h2 class="error-title">Oops! Page Not Found</h2>
+                <p class="error-message">
+                    The page you are looking for might have been removed, had its name changed, 
+                    or is temporarily unavailable. Please check the URL or use the search bar below.
+                </p>
+                
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search our website...">
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Go to Homepage
+                    </a>
+                    <a href="#" onclick="window.history.back()" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Go Back
+                    </a>
+                    <a href="mailto:support@example.com" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Contact Support
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="copyright">
+            <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    alert(`Searching for: "${searchTerm}"\nIn a real implementation, this would redirect to search results.`);
+                    // In a real implementation, you would redirect to search results
+                    // window.location.href = `/search?q=${encodeURIComponent(searchTerm)}`;
+                }
+            }
+        });
+        
+        // Add hover effect to links
+        document.querySelectorAll('.links-grid a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Animate error code on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const errorCode = document.querySelector('.error-code');
+            errorCode.style.opacity = '0';
+            errorCode.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                errorCode.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                errorCode.style.opacity = '1';
+                errorCode.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
